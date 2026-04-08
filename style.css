@@ -318,6 +318,8 @@ strong {
     width: 100%;
     outline: none;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .volume-slider::-webkit-slider-thumb {
@@ -336,6 +338,7 @@ strong {
     border-radius: 50%;
     cursor: pointer;
     border: none;
+    appearance: none;
 }
 
 .progress-container {
