@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Venta Rôleplay</title>
+    </head>
+
+    <body>
+        <div class="background" id="background">
+            <div class="player" id="player"></div>
+        </div>
+        <script>
+            let videoId = 'nVnnSm00EUM';
+
+            let tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            let firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            function onYouTubeIframeAPIReady() {
+                let player = new YT.Player('player', {
+                    width: '100%',
+                    videoId: videoId,
+                    playerVars: {
+                        autoplay: 1,
+                        mute: 1,
+                        controls: 0,
+                        disablekb: 1,
+                        fs: 0,
+                        iv_load_policy: 3,
+                        modestbranding: 1,
+                        rel: 0,
+                        playsinline: 1,
+                        vq: 'hd2160',
+                    },
+                    events: {
+                        onReady: function (event) {
+                            event.target.mute();
+                            event.target.setPlaybackQuality('hd2160');
+                        },
+                        onStateChange: function (event) {
+                            event.target.setPlaybackQuality('hd2160');
+                            if (event.data === YT.PlayerState.ENDED) {
+                                event.target.seekTo(0);
+                                // seekTo() en remplacement de loop: 1, playlist: videoId
+                                event.target.playVideo();
+                            }
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                const playerElement = document.getElementById('player');
+                                if (playerElement) {
+                                    playerElement.style.opacity = '1';
+                                }
+                            }
+                        },
+                    },
+                });
+            }
+        </script>
+
+        <div class="background-overlay"></div>
+
+        <div class="music-player">
+            <div class="music-info">
+                <img class="song-icon" id="songIcon" />
+                <div class="song-meta">
+                    <p class="song-title">Chargement...</p>
+                    <p class="artist"></p>
+                </div>
+            </div>
+            <div class="music-controls">
+                <button class="control-btn" id="prevBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                    </svg>
+                </button>
+                <button class="control-btn" id="playPauseBtn">
+                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                    </svg>
+                </button>
+                <button class="control-btn" id="nextBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                    </svg>
+                </button>
+                <div class="volume-control">
+                    <input type="range" id="volumeSlider" min="0" max="100" value="10" class="volume-slider" />
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="separator"> / </span>
+                    <span id="totalTime">0:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="left-container">
+            <p class="title">Bienvenue sur Venta Rôleplay</p>
+            <p class="command"><strong>F1</strong>Ouvrir la boutique</p>
+            <p class="command"><strong>F3</strong>Changer la portée de la voix</p>
+            <p class="command"><strong>F5</strong>Ouvrir le menu personnel</p>
+            <p class="command"><strong>G</strong>Sortir votre téléphone</p>
+            <p class="command"><strong>U</strong>Utiliser les clés d'un véhicule</p>
+        </div>
+
+        <div class="server-logo">
+            <img src="logo.png" alt="Logo du serveur" draggable="false" />
+        </div>
+
+        <progress id="loading-bar" value="0" max="1"></progress>
+        <script src="script.js"></script>
+    </body>
+</html>
