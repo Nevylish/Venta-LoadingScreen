@@ -318,7 +318,6 @@ strong {
     width: 100%;
     outline: none;
     cursor: pointer;
-    -webkit-appearance: none;
 }
 
 .volume-slider::-webkit-slider-thumb {
