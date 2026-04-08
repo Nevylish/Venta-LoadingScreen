@@ -2,6 +2,14 @@
 
 A modern, highly customizable, and interactive FiveM loading screen created for Venta Rôleplay. It features a stunning 4K YouTube video background, a fully functional music player, and audio-reactive visual effects to keep your players entertained while joining your server.
 
+## 🎥 Preview
+
+Live preview available: https://nevylish.github.io/Venta-LoadingScreen/
+
+https://github.com/user-attachments/assets/a8069336-d388-45a3-b9f2-12c8d31cecc0
+
+Credits: Background video used for example: https://www.youtube.com/watch?v=nVnnSm00EUM
+
 ## ✨ Features
 
 - **🎬 4K UHD Video Background**: Utilizes the YouTube API to automatically maintain the highest visual quality (hd2160) and provides seamless looping without quality drops.
