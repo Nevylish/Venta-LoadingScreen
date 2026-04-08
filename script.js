@@ -144,13 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'JUMP',
             artist: 'BLACKPINK',
         },
-        {
-            id: 'music5',
-            file: 'songs/song5.mp3',
-            icon: 'songs/song5.png',
-            title: 'Soviet Connection',
-            artist: 'Michael Hunter (GTA IV Theme)',
-        },
     ]);
 
     let currentSongIndex = 0;
@@ -425,6 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('keydown', unlock);
         });
     }
+
     tryAutoplay();
 
     document.addEventListener('keydown', function (event) {
