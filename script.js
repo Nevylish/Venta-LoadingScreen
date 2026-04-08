@@ -25,27 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('loading-bar').value = value;
         }, 1000);
 
-        const devwatermark = document.createElement('div');
-        devwatermark.innerText = `Nevylish`;
-        devwatermark.style.position = 'fixed';
-        devwatermark.style.textAlign = 'center';
-        devwatermark.style.bottom = '1.6vh';
-        devwatermark.style.right = '1vw';
-        devwatermark.style.color = 'rgba(255, 255, 255, 0.3)';
-        devwatermark.style.fontFamily = 'Brittany Signature';
-        devwatermark.style.fontSize = '18px';
-        devwatermark.style.zIndex = '9999';
-        devwatermark.style.transition = 'opacity 0.5s ease-in-out';
-        document.body.appendChild(devwatermark);
+        const watermark = document.createElement('div');
+        watermark.innerText = `Nevylish`;
+        watermark.style.position = 'fixed';
+        watermark.style.textAlign = 'center';
+        watermark.style.bottom = '1.6vh';
+        watermark.style.right = '1vw';
+        watermark.style.color = 'rgba(255, 255, 255, 0.3)';
+        watermark.style.fontFamily = 'Brittany Signature';
+        watermark.style.fontSize = '18px';
+        watermark.style.zIndex = '9999';
+        watermark.style.transition = 'opacity 0.5s ease-in-out';
+        document.body.appendChild(watermark);
         console.log(
             'Development preview, go to https://github.com/Nevylish/Venta-LoadingScreen.\nCreated by Nevylish for Venta Rôleplay.',
         );
 
         setTimeout(() => {
-            devwatermark.style.opacity = '0';
+            watermark.style.opacity = '0';
         }, 1000);
 
-        const prenoms = [
+        const names = [
             'Léa',
             'Lucas',
             'Théo',
@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'Tiago',
         ];
 
-        const prenom = prenoms[Math.floor(Math.random() * prenoms.length)];
-        document.querySelector('.title').innerText = `Bienvenue sur Venta Rôleplay, ${prenom}`;
+        const name = names[Math.floor(Math.random() * names.length)];
+        document.querySelector('.title').innerText = `Bienvenue sur Venta Rôleplay, ${name}`;
     } else {
         if (window.nuiHandoverData && window.nuiHandoverData.name) {
             document.querySelector('.title').innerText = 'Bienvenue sur Venta Rôleplay, ' + window.nuiHandoverData.name;
