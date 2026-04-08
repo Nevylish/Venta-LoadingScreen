@@ -6,7 +6,7 @@ A modern, highly customizable, and interactive FiveM loading screen created for 
 
 Live preview available: https://nevylish.github.io/Venta-LoadingScreen/
 
-https://github.com/user-attachments/assets/a8069336-d388-45a3-b9f2-12c8d31cecc0
+https://github.com/user-attachments/assets/22e8d703-de98-46af-94c1-1ada684c4b2b
 
 Credits: Background video used for example: https://www.youtube.com/watch?v=nVnnSm00EUM
 
