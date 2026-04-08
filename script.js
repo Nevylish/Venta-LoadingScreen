@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    if (
-        ['loading.ventarp.fr', '127.0.0.1', 'localhost', 'nevylish.fr', 'netlify.app', 'github.io'].includes(
-            window.location.hostname,
-        )
-    ) {
+    if (['loading.ventarp.fr', '127.0.0.1', 'localhost', 'nevylish.github.io'].includes(window.location.hostname)) {
         const font = document.createElement('style');
         font.innerHTML = `
             @font-face {
