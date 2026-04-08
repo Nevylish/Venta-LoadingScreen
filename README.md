@@ -49,10 +49,18 @@ const songs = shuffle([
 
 ### Default Volume
 
-You can change the default startup volume in `script.js`. Find this line and adjust the value (between 0.0 and 1.0):
+To change the default startup volume, you need to update two files so that the logic and the visual slider match.
 
+1. **In `script.js`**: Adjust the base logic value (between `0.0` and `1.0`).
 ```javascript
 let currentVolume = 0.15; // Represents 15% volume
+```
+
+2. **In `index.html`**: Update the visual slider `value` attribute (between `0` and `100`) to match the percentage above.
+```html
+<div class="volume-control">
+    <input type="range" id="volumeSlider" min="0" max="100" value="15" class="volume-slider" />
+</div>
 ```
 
 ### Customizing the Display Name
