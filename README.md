@@ -29,14 +29,7 @@ Credits: Background video used for example: https://www.youtube.com/watch?v=nVnn
 
 ### Changing the Background Video
 
-To change the YouTube background video, open `index.html` and modify the following variable with your desired YouTube Video ID:
-
-```html
-<script>
-    let videoId = 'nVnnSm00EUM'; // Replace with your YouTube Video ID
-    // ...
-</script>
-```
+To change the background video, simply replace the video in the background folder
 
 ### Changing the Music
 
@@ -60,11 +53,13 @@ const songs = shuffle([
 To change the default startup volume, you need to update two files so that the logic and the visual slider match.
 
 1. **In `script.js`**: Adjust the base logic value (between `0.0` and `1.0`).
+
 ```javascript
 let currentVolume = 0.15; // Represents 15% volume
 ```
 
 2. **In `index.html`**: Update the visual slider `value` attribute (between `0` and `100`) to match the percentage above.
+
 ```html
 <div class="volume-control">
     <input type="range" id="volumeSlider" min="0" max="100" value="15" class="volume-slider" />

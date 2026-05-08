@@ -18,4 +18,5 @@ files {
     'logo.png',
     'songs/**.mp3',
     'songs/**.jpg',
+    'background/**.mp4',
 } 

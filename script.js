@@ -37,9 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'Development preview, go to https://github.com/Nevylish/Venta-LoadingScreen.\nCreated by Nevylish for Venta Rôleplay.',
         );
 
+        document.getElementById('pre-container').style.opacity = '1';
+
         setTimeout(() => {
+            document.getElementById('pre-container').style.opacity = '0';
             watermark.style.opacity = '0';
-        }, 1000);
+            document.getElementById('player').style.opacity = '1';
+            document.getElementById('main-container').style.opacity = '1';
+        }, 2500);
 
         const names = [
             'Alvaro',
