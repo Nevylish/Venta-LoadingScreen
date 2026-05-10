@@ -1,9 +1,22 @@
+<!-- =============================================================================================
+//
+//                            ███████╗ ████████╗  ██████╗  ██████╗
+//                            ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗
+//                            ███████╗    ██║    ██║   ██║ ██████╔╝
+//                            ╚════██║    ██║    ██║   ██║ ██╔═══╝
+//                            ███████║    ██║    ╚██████╔╝ ██║
+//                            ╚══════╝    ╚═╝     ╚═════╝  ╚═╝
+//
+//                              NE PAS TOUCHER LE CODE CI-DESSOUS
+//                            SAUF SI VOUS SAVEZ CE QUE VOUS FAITES
+//
+// ============================================================================================= -->
 <!doctype html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css?v=2026-05-10" />
+        <link rel="stylesheet" href="style.css?v=2026-05-11" />
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
         <meta name="robots" content="noindex, nofollow" />
         <title>Venta Rôleplay</title>
@@ -17,22 +30,22 @@
         </div>
 
         <div class="splash-container" id="splashContainer">
-            <img src="background/image.png?v=2026-05-10" draggable="false" id="splash-img" alt="Logo Venta" />
+            <img src="background/image.png?v=2026-05-11" draggable="false" id="splash-img" alt="Logo Venta" />
         </div>
 
         <div class="background-container" id="backgroundContainer">
             <video
                 class="background-video"
                 id="backgroundVideo"
-                src="background/video.mp4?v=2026-05-10"
+                src="background/video.mp4?v=2026-05-11"
                 muted
                 loop
             ></video>
             <div class="background-overlay" id="backgroundOverlay"></div>
         </div>
 
-        <div class="player-container" id="playerContainer">
-            <div class="music-player">
+        <div class="main-container" id="mainContainer">
+            <div class="music-player-container" id="musicPlayerContainer">
                 <div class="music-info">
                     <img class="song-icon" id="songIcon" />
                     <div class="song-meta">
@@ -79,13 +92,14 @@
                 <p class="title" id="title"></p>
             </div>
 
-            <div class="right-container">
-                <img src="logo.png?v=2026-05-10" alt="Logo du serveur" draggable="false" />
+            <div class="logo-container" id="logoContainer">
+                <img src="logo.png?v=2026-05-11" alt="Logo du serveur" draggable="false" />
             </div>
 
             <progress class="loading-bar" id="loadingBar" value="0" max="1"></progress>
         </div>
 
-        <script src="script.js?v=2026-05-10"></script>
+        <script src="config.js?v=2026-05-11"></script>
+        <script src="script.js?v=2026-05-11"></script>
     </body>
 </html>

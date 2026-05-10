@@ -16,7 +16,7 @@ Credits: Background video used for example: https://www.youtube.com/watch?v=nVnn
 - **🔊 Audio-Reactive (Beat Detection)**: Visual background effects (subtle dimming/flashing) smoothly synchronized with the bass of the playing track using the Web Audio API.
 - **🔄 FiveM Synchronization**: A dynamic progress bar that communicates directly with native FiveM loading events (`loadProgress` and `nuiHandoverData`) to show true loading states.
 - **📱 Responsive Design**: Fully responsive CSS scaled for all displays, ranging from standard monitors all the way up to ultra-wide 4K (3840px) displays.
-- **⚙️ Configurable**: All features are configurable in `script.js`.
+- **⚙️ Configurable**: All features are configurable in `config.js`.
 
 ## 📥 Installation
 
@@ -33,10 +33,10 @@ To change the background video, simply replace the video in the background folde
 
 ### Changing the Music
 
-To add or modify the available songs, open `script.js` and edit the `songs` array. Make sure your `.mp3` and cover image files are in the `songs/` folder.
+To add or modify the available songs, open `config.js` and edit the `songs` array. Make sure your `.mp3` and cover image files are in the `songs/` folder.
 
 ```javascript
-const songs = shuffle([
+const songs = [
     {
         id: 'music1',
         file: 'songs/song1.mp3',
@@ -45,19 +45,21 @@ const songs = shuffle([
         artist: 'Tiësto & Black Eyed Peas',
     },
     // Add more objects here...
-]);
+];
 ```
 
 ### Default Volume
 
 To change the default startup volume, you need to update two files so that the logic and the visual slider match.
 
-**In `script.js`**: Adjust the base logic value (between `0` and `100`).
+**In `config.js`**: Adjust the base logic value (between `0` and `100`).
 
 ```javascript
 const config = {
     // ...
-    defaultVolume: 15, // Represents 15% volume
+    music: {
+        defaultVolume: 15, // Represents 15% volume
+    },
     // ...
 };
 ```

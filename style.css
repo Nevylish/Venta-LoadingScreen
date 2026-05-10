@@ -1,3 +1,17 @@
+/* =============================================================================================
+//
+//                            ███████╗ ████████╗  ██████╗  ██████╗
+//                            ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗
+//                            ███████╗    ██║    ██║   ██║ ██████╔╝
+//                            ╚════██║    ██║    ██║   ██║ ██╔═══╝
+//                            ███████║    ██║    ╚██████╔╝ ██║
+//                            ╚══════╝    ╚═╝     ╚═════╝  ╚═╝
+//
+//                              NE PAS TOUCHER LE CODE CI-DESSOUS
+//                            SAUF SI VOUS SAVEZ CE QUE VOUS FAITES
+//
+// ============================================================================================= */
+
 :root {
     --main-bg: #000;
     --shadow: 0 0.5vw 2vw #000a;
@@ -111,7 +125,7 @@ body {
     transition: opacity 0.3s linear;
 }
 
-.player-container {
+.main-container {
     opacity: 0;
     transition: opacity 0.5s linear;
 }
@@ -154,7 +168,7 @@ strong {
     text-transform: uppercase;
 }
 
-.right-container {
+.logo-container {
     position: absolute;
     top: 0.7vh;
     right: 1vw;
@@ -163,7 +177,7 @@ strong {
     z-index: 10;
 }
 
-.right-container img {
+.logo-container img {
     height: 15vh;
 }
 
@@ -246,7 +260,7 @@ strong {
     filter: var(--logo-shadow);
 }
 
-.music-player {
+.music-player-container {
     position: absolute;
     bottom: 2vh;
     left: 1.4vw;
@@ -260,9 +274,10 @@ strong {
     min-width: 200px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    display: none;
 }
 
-.music-player:hover {
+.music-player-container:hover {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
@@ -447,7 +462,7 @@ strong {
     .logo img {
         height: 22vh;
     }
-    .music-player {
+    .music-player-container {
         width: 22vw;
         min-width: 260px;
     }
@@ -467,7 +482,7 @@ strong {
     .logo img {
         height: 20vh;
     }
-    .music-player {
+    .music-player-container {
         width: 26vw;
         min-width: 240px;
     }
@@ -486,7 +501,7 @@ strong {
     .logo img {
         height: 18vh;
     }
-    .music-player {
+    .music-player-container {
         width: 32vw;
         min-width: 220px;
     }
@@ -505,7 +520,7 @@ strong {
     .logo img {
         height: 16vh;
     }
-    .music-player {
+    .music-player-container {
         width: 38vw;
         min-width: 200px;
     }
@@ -524,7 +539,7 @@ strong {
     .logo img {
         height: 28vh;
     }
-    .music-player {
+    .music-player-container {
         width: 16vw;
         min-width: 280px;
     }
@@ -540,7 +555,7 @@ strong {
     .logo img {
         height: 35vh;
     }
-    .music-player {
+    .music-player-container {
         width: 14vw;
         min-width: 300px;
     }
