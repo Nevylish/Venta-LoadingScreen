@@ -1,135 +1,261 @@
+// =============================================================================================
+//
+//                  ██████╗  ██████╗  ███╗   ██╗ ███████╗ ██╗  ██████╗
+//                 ██╔════╝ ██╔═══██╗ ████╗  ██║ ██╔════╝ ██║ ██╔════╝
+//                 ██║      ██║   ██║ ██╔██╗ ██║ █████╗   ██║ ██║  ███╗
+//                 ██║      ██║   ██║ ██║╚██╗██║ ██╔══╝   ██║ ██║   ██║
+//                 ╚██████╗ ╚██████╔╝ ██║ ╚████║ ██║      ██║ ╚██████╔╝
+//                  ╚═════╝  ╚═════╝  ╚═╝  ╚═══╝ ╚═╝      ╚═╝  ╚═════╝
+//
+// =============================================================================================
+
+// Liste des sons qui seront joués aléatoirement
+// Pensez à bien orthographier les noms des fichiers et les extensions (.mp3 / .jpg / .png...)
+const songs = shuffle([
+    {
+        id: 'song1',
+        file: 'songs/song1.mp3',
+        icon: 'songs/song1.jpg',
+        title: 'Pump It Louder',
+        artist: 'Tiësto & Black Eyed Peas',
+    },
+    {
+        id: 'song2',
+        file: 'songs/song2.mp3',
+        icon: 'songs/song2.jpg',
+        title: 'Dirty Cash',
+        artist: 'PAWSA & The Adventures Of Stevie V',
+    },
+    {
+        id: 'song3',
+        file: 'songs/song3.mp3',
+        icon: 'songs/song3.jpg',
+        title: 'Chill Like That',
+        artist: 'Sunday Scaries & PiCKUPLiNES',
+    },
+    {
+        id: 'song4',
+        file: 'songs/song4.mp3',
+        icon: 'songs/song4.jpg',
+        title: 'JUMP',
+        artist: 'BLACKPINK',
+    },
+]);
+
+// Liste des commandes qui seront affichées
+const commands = [
+    {
+        key: 'F1',
+        text: 'Ouvrir la boutique',
+    },
+    {
+        key: 'F3',
+        text: 'Changer la portée de la voix',
+    },
+    {
+        key: 'F5',
+        text: 'Ouvrir le menu personnel',
+    },
+    {
+        key: 'G',
+        text: 'Sortir votre téléphone',
+    },
+    {
+        key: 'U',
+        text: 'Utiliser les clés de votre véhicule',
+    },
+];
+
+// Configuration supplémentaire
+
+// true = activé
+// false = désactivé
+const config = {
+    // Personnalisation du message de bienvenue
+    welcome: {
+        text: 'Bienvenue sur Venta Rôleplay',
+
+        // Afficher le nom du joueur
+        displayPlayerName: true,
+
+        // Inclure l'espace dans le sépérator
+        // Utilise si displayPlayerName est activé
+        separator: ', ',
+    },
+
+    // Volume par défaut (de 0 à 100)
+    defaultVolume: 15,
+
+    // Afficher l'image avant le chargement (background/image.png)
+    displaySplash: false,
+
+    // Activer le dégradé sombre sur les contours
+    enableBackgroundOverlay: true,
+
+    // Activer la détection de basses et faire réagir le fond
+    enableReactiveBackground: true,
+};
+
+// =============================================================================================
+//
+//                            ███████╗ ████████╗  ██████╗  ██████╗
+//                            ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗
+//                            ███████╗    ██║    ██║   ██║ ██████╔╝
+//                            ╚════██║    ██║    ██║   ██║ ██╔═══╝
+//                            ███████║    ██║    ╚██████╔╝ ██║
+//                            ╚══════╝    ╚═╝     ╚═════╝  ╚═╝
+//
+//                              NE PAS TOUCHER LE CODE CI-DESSOUS
+//                            SAUF SI VOUS SAVEZ CE QUE VOUS FAITES
+//
+// =============================================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    if (['loading.ventarp.fr', '127.0.0.1', 'localhost', 'nevylish.github.io'].includes(window.location.hostname)) {
-        const font = document.createElement('style');
-        font.innerHTML = `
-            @font-face {
-                font-family: 'Brittany Signature';
-                src: url('https://nevylish.fr/assets/fonts/BrittanySignature-LjyZ.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
+    const title = document.getElementById('title');
+    const loadingBar = document.getElementById('loadingBar');
+    const splashContainer = document.getElementById('splashContainer');
+    const background = document.getElementById('backgroundContainer');
+    const backgroundOverlay = document.getElementById('backgroundOverlay');
+    const backgroundVideo = document.getElementById('backgroundVideo');
+    const playerContainer = document.getElementById('playerContainer');
+    const leftContainer = document.getElementById('leftContainer');
+
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const progressFill = document.getElementById('progressFill');
+    const progressBar = document.getElementById('progressBar');
+    const totalTimeSpan = document.getElementById('totalTime');
+    const currentTimeSpan = document.getElementById('currentTime');
+    const songTitle = document.getElementById('songTitle');
+    const artistName = document.getElementById('songArtist');
+    const songIcon = document.getElementById('songIcon');
+
+    if (['127.0.0.1', 'localhost', 'ventarp.fr', 'github.io', 'nevylish.fr'].includes(window.location.hostname)) {
+        if (config.welcome.displayPlayerName) {
+            const names = [
+                'Alvaro',
+                'Andrew',
+                'Cassie',
+                'Diego',
+                'Ethan',
+                'Eva',
+                'Hayley',
+                'Ivy',
+                'Jake',
+                'James',
+                'Jessie',
+                'Jimmy',
+                'Justin',
+                'Kurtis',
+                'Leon',
+                'Lizzy',
+                'Megan',
+                'Naya',
+                'Reese',
+                'Ruben',
+                'Thomas',
+                'Zack',
+            ];
+
+            const name = names[Math.floor(Math.random() * names.length)];
+            title.innerText = `${config.welcome.text}${config.welcome.separator}${name}`;
+        } else {
+            title.innerText = config.welcome.text;
+        }
+
+        const previewContainer = document.getElementById('previewContainer');
+        const previewWatermark = document.getElementById('previewWatermark');
+
+        const year = new Date().getFullYear();
+        previewWatermark.innerText = `© ${year} Nevylish — Venta Rôleplay`;
+
+        previewContainer.style.display = 'flex';
+        previewContainer.addEventListener('click', () => {
+            toggleFullScreen();
+
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
             }
-        `;
-        document.head.appendChild(font);
 
-        let value = 0;
+            audio
+                .play()
+                .then(() => {
+                    audio.pause();
+                })
+                .catch(() => {});
 
-        const intervalId = setInterval(() => {
-            value += Math.random(0, 1) / 10;
-            if (value > 1) {
-                clearInterval(intervalId);
-            }
-            document.getElementById('loading-bar').value = value;
-        }, 1000);
+            previewContainer.style.display = 'none';
 
-        const watermark = document.createElement('div');
-        watermark.innerText = `Nevylish`;
-        watermark.style.position = 'fixed';
-        watermark.style.textAlign = 'center';
-        watermark.style.bottom = '1.6vh';
-        watermark.style.right = '1vw';
-        watermark.style.color = 'rgba(255, 255, 255, 0.3)';
-        watermark.style.fontFamily = 'Brittany Signature';
-        watermark.style.fontSize = '18px';
-        watermark.style.zIndex = '9999';
-        watermark.style.transition = 'opacity 0.5s ease-in-out';
-        document.body.appendChild(watermark);
-        console.log(
-            'Development preview, go to https://github.com/Nevylish/Venta-LoadingScreen.\nCreated by Nevylish for Venta Rôleplay.',
-        );
-
-        document.getElementById('pre-container').style.opacity = '1';
-
-        setTimeout(() => {
-            document.getElementById('pre-container').style.opacity = '0';
-            watermark.style.opacity = '0';
-            document.getElementById('player').style.opacity = '1';
-            document.getElementById('main-container').style.opacity = '1';
-        }, 2500);
-
-        const names = [
-            'Alvaro',
-            'Andrew',
-            'Cassie',
-            'Diego',
-            'Ethan',
-            'Eva',
-            'Hayley',
-            'Ivy',
-            'Jake',
-            'James',
-            'Jessie',
-            'Jimmy',
-            'Justin',
-            'Kurtis',
-            'Leon',
-            'Lizzy',
-            'Megan',
-            'Naya',
-            'Reese',
-            'Ruben',
-            'Thomas',
-            'Zack',
-        ];
-
-        const name = names[Math.floor(Math.random() * names.length)];
-        document.querySelector('.title').innerText = `Bienvenue sur Venta Rôleplay, ${name}`;
+            start(true);
+        });
     } else {
-        if (window.nuiHandoverData && window.nuiHandoverData.name) {
-            document.querySelector('.title').innerText = 'Bienvenue sur Venta Rôleplay, ' + window.nuiHandoverData.name;
+        title.innerText = config.welcome.text;
+
+        start();
+
+        if (window.nuiHandoverData && window.nuiHandoverData.name && config.welcome.displayPlayerName) {
+            title.innerText = `${config.welcome.text}${config.welcome.separator}${window.nuiHandoverData.name}`;
         }
 
         window.addEventListener('message', (event) => {
             if (event.data.eventName !== 'loadProgress') return;
-            document.getElementById('loading-bar').value = event.data.loadFraction;
+            loadingBar.value = event.data.loadFraction;
         });
     }
 
-    function shuffle(array) {
-        const arr = array.slice();
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
+    if (!config.enableBackgroundOverlay) {
+        backgroundOverlay.style.display = 'none';
     }
-
-    const songs = shuffle([
-        {
-            id: 'music1',
-            file: 'songs/song1.mp3',
-            icon: 'songs/song1.jpg',
-            title: 'Pump It Louder',
-            artist: 'Tiësto & Black Eyed Peas',
-        },
-        {
-            id: 'music2',
-            file: 'songs/song2.mp3',
-            icon: 'songs/song2.jpg',
-            title: 'Dirty Cash',
-            artist: 'PAWSA & The Adventures Of Stevie V',
-        },
-        {
-            id: 'music3',
-            file: 'songs/song3.mp3',
-            icon: 'songs/song3.jpg',
-            title: 'Chill Like That',
-            artist: 'Sunday Scaries & PiCKUPLiNES',
-        },
-        {
-            id: 'music4',
-            file: 'songs/song4.mp3',
-            icon: 'songs/song4.jpg',
-            title: 'JUMP',
-            artist: 'BLACKPINK',
-        },
-    ]);
+    if (leftContainer && commands.length > 0) {
+        commands.forEach((command) => {
+            const element = document.createElement('p');
+            element.classList.add('command');
+            element.innerHTML = `<strong>${command.key}</strong>${command.text}`;
+            leftContainer.appendChild(element);
+        });
+    }
 
     let currentSongIndex = 0;
     let audio = new Audio(songs[currentSongIndex].file);
-    let currentVolume = 0.15;
+
+    let currentVolume = config.defaultVolume / 100;
+    volumeSlider.value = config.defaultVolume;
 
     let audioCtx, analyser, sourceNode, lowpassFilter, gainNode;
-    const background = document.getElementById('background');
+
+    // Only used for web preview
+    function startFakeLoading() {
+        let value = 0;
+
+        const intervalId = setInterval(() => {
+            value += Math.random(0, 1) / 50;
+            if (value > 1) {
+                clearInterval(intervalId);
+            }
+            loadingBar.value = value;
+        }, 300);
+    }
+
+    function start(fakeLoading = false) {
+        if (config.displaySplash) splashContainer.style.opacity = '1';
+
+        setTimeout(
+            () => {
+                splashContainer.style.opacity = '0';
+                backgroundVideo.style.opacity = '1';
+                playerContainer.style.opacity = '1';
+
+                tryAutoplay();
+
+                if (fakeLoading) {
+                    startFakeLoading();
+                }
+            },
+            config.displaySplash ? 2500 : 0,
+        );
+    }
 
     function setVolume(value) {
         currentVolume = value;
@@ -231,19 +357,10 @@ document.addEventListener('DOMContentLoaded', () => {
         detect();
     }
 
-    startBeatDetection();
-
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const progressFill = document.getElementById('progressFill');
-    const progressBar = document.querySelector('.progress-bar');
-    const totalTimeSpan = document.getElementById('totalTime');
-    const currentTimeSpan = document.getElementById('currentTime');
-    const songTitle = document.querySelector('.song-title');
-    const artistName = document.querySelector('.artist');
-    const songIcon = document.querySelector('.song-icon');
+    if (config.enableReactiveBackground) {
+        background.style.filter = 'brightness(0.75)';
+        startBeatDetection();
+    }
 
     function updateTrackInfo() {
         const currentTrack = songs[currentSongIndex];
@@ -376,9 +493,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function tryAutoplay() {
+        backgroundVideo.muted = true;
+        backgroundVideo.play().catch((err) => {
+            if (err.name !== 'AbortError') {
+                console.warn('Erreur de lecture vidéo:', err);
+            }
+        });
+
         audio.play().catch((err) => {
             if (err.name !== 'AbortError') {
-                console.warn('Erreur de lecture:', err);
+                console.warn('Erreur de lecture audio:', err);
             }
 
             const unlock = () => {
@@ -397,8 +521,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    tryAutoplay();
-
     document.addEventListener('keydown', function (event) {
         if (
             event.code === 'Space' &&
@@ -414,4 +536,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    function toggleFullScreen() {
+        const doc = window.document;
+        const docEl = doc.documentElement;
+
+        const requestFullScreen =
+            docEl.requestFullscreen ||
+            docEl.mozRequestFullScreen ||
+            docEl.webkitRequestFullScreen ||
+            docEl.msRequestFullscreen;
+        const cancelFullScreen =
+            doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+        if (
+            !doc.fullscreenElement &&
+            !doc.mozFullScreenElement &&
+            !doc.webkitFullscreenElement &&
+            !doc.msFullscreenElement
+        ) {
+            requestFullScreen.call(docEl);
+        } else {
+            cancelFullScreen.call(doc);
+        }
+    }
 });
+
+function shuffle(array) {
+    const arr = array.slice();
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}

@@ -3,29 +3,41 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style.css?v=2026-05-10" />
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
         <meta name="robots" content="noindex, nofollow" />
         <title>Venta Rôleplay</title>
     </head>
 
     <body>
-        <div class="pre-container" id="pre-container">
-            <img src="background/image.png" draggable="false" id="pre-image" alt="Logo Venta" />
+        <div class="preview-container" id="previewContainer">
+            <p class="preview-main-text">Cliquez n'importe où sur l'écran pour lancer la preview</p>
+            <p class="preview-sub-text">Pour un rendu optimal, testez sur un écran d'ordinateur.</p>
+            <p class="preview-watermark" id="previewWatermark"></p>
         </div>
 
-        <div class="background" id="background">
-            <video class="player" id="player" src="background/video.mp4" autoplay muted loop></video>
-            <div class="background-overlay"></div>
+        <div class="splash-container" id="splashContainer">
+            <img src="background/image.png?v=2026-05-10" draggable="false" id="splash-img" alt="Logo Venta" />
         </div>
 
-        <div class="main-container" id="main-container">
+        <div class="background-container" id="backgroundContainer">
+            <video
+                class="background-video"
+                id="backgroundVideo"
+                src="background/video.mp4?v=2026-05-10"
+                muted
+                loop
+            ></video>
+            <div class="background-overlay" id="backgroundOverlay"></div>
+        </div>
+
+        <div class="player-container" id="playerContainer">
             <div class="music-player">
                 <div class="music-info">
                     <img class="song-icon" id="songIcon" />
                     <div class="song-meta">
-                        <p class="song-title">Chargement...</p>
-                        <p class="artist"></p>
+                        <p class="song-title" id="songTitle">Chargement...</p>
+                        <p class="artist" id="songArtist"></p>
                     </div>
                 </div>
                 <div class="music-controls">
@@ -52,7 +64,7 @@
                     </div>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar">
+                    <div class="progress-bar" id="progressBar">
                         <div class="progress-fill" id="progressFill"></div>
                     </div>
                     <div class="time-display">
@@ -63,22 +75,17 @@
                 </div>
             </div>
 
-            <div class="left-container">
-                <p class="title">Bienvenue sur Venta Rôleplay</p>
-                <p class="command"><strong>F1</strong>Ouvrir la boutique</p>
-                <p class="command"><strong>F3</strong>Changer la portée de la voix</p>
-                <p class="command"><strong>F5</strong>Ouvrir le menu personnel</p>
-                <p class="command"><strong>G</strong>Sortir votre téléphone</p>
-                <p class="command"><strong>U</strong>Utiliser les clés d'un véhicule</p>
+            <div class="left-container" id="leftContainer">
+                <p class="title" id="title"></p>
             </div>
 
-            <div class="server-logo">
-                <img src="logo.png" alt="Logo du serveur" draggable="false" />
+            <div class="right-container">
+                <img src="logo.png?v=2026-05-10" alt="Logo du serveur" draggable="false" />
             </div>
 
-            <progress id="loading-bar" value="0" max="1"></progress>
+            <progress class="loading-bar" id="loadingBar" value="0" max="1"></progress>
         </div>
 
-        <script src="script.js"></script>
+        <script src="script.js?v=2026-05-10"></script>
     </body>
 </html>

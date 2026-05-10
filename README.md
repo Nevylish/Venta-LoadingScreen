@@ -12,11 +12,11 @@ Credits: Background video used for example: https://www.youtube.com/watch?v=nVnn
 
 ## ✨ Features
 
-- **🎬 4K UHD Video Background**: Utilizes the YouTube API to automatically maintain the highest visual quality (hd2160) and provides seamless looping without quality drops.
 - **🎵 Custom Audio Player**: A fully embedded music player displaying album covers, track titles, and artists. Includes interactive controls (clickable progress bar, volume slider, next/previous track buttons).
 - **🔊 Audio-Reactive (Beat Detection)**: Visual background effects (subtle dimming/flashing) smoothly synchronized with the bass of the playing track using the Web Audio API.
 - **🔄 FiveM Synchronization**: A dynamic progress bar that communicates directly with native FiveM loading events (`loadProgress` and `nuiHandoverData`) to show true loading states.
 - **📱 Responsive Design**: Fully responsive CSS scaled for all displays, ranging from standard monitors all the way up to ultra-wide 4K (3840px) displays.
+- **⚙️ Configurable**: All features are configurable in `script.js`.
 
 ## 📥 Installation
 
@@ -52,18 +52,14 @@ const songs = shuffle([
 
 To change the default startup volume, you need to update two files so that the logic and the visual slider match.
 
-1. **In `script.js`**: Adjust the base logic value (between `0.0` and `1.0`).
+**In `script.js`**: Adjust the base logic value (between `0` and `100`).
 
 ```javascript
-let currentVolume = 0.15; // Represents 15% volume
-```
-
-2. **In `index.html`**: Update the visual slider `value` attribute (between `0` and `100`) to match the percentage above.
-
-```html
-<div class="volume-control">
-    <input type="range" id="volumeSlider" min="0" max="100" value="15" class="volume-slider" />
-</div>
+const config = {
+    // ...
+    defaultVolume: 15, // Represents 15% volume
+    // ...
+};
 ```
 
 ### Customizing the Display Name

@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'mdwt06 & Nevylish'
 description 'Venta Rôleplay - Loading'
-version '1.2'
+version '1.3'
 
 loadscreen 'index.html'
 loadscreen_cursor 'yes'
@@ -19,4 +19,5 @@ files {
     'songs/**.mp3',
     'songs/**.jpg',
     'background/**.mp4',
+    'background/**.png',
 } 
