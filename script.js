@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalTimeSpan = document.getElementById('totalTime');
     const currentTimeSpan = document.getElementById('currentTime');
     const songTitle = document.getElementById('songTitle');
-    const artistName = document.getElementById('songArtist');
+    const songArtist = document.getElementById('songArtist');
     const songIcon = document.getElementById('songIcon');
 
     const isPreview = () => {
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTrackInfo() {
         const currentTrack = shuffledSongs[currentSongIndex];
         if (songTitle) songTitle.textContent = currentTrack.title;
-        if (artistName) artistName.textContent = currentTrack.artist;
+        if (songArtist) songArtist.textContent = currentTrack.artist;
         if (songIcon) {
             if (currentTrack.icon) {
                 songIcon.src = currentTrack.icon;

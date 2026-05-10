@@ -313,7 +313,7 @@ strong {
     letter-spacing: 0.05vw;
 }
 
-.artist {
+.song-artist {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(0.7rem, 1vw, 0.9rem);
     color: rgba(255, 255, 255, 0.7);
