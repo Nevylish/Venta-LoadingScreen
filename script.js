@@ -132,7 +132,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const artistName = document.getElementById('songArtist');
     const songIcon = document.getElementById('songIcon');
 
-    if (['127.0.0.1', 'localhost', 'ventarp.fr', 'github.io', 'nevylish.fr'].includes(window.location.hostname)) {
+    const isPreview = () => {
+        const hostnames = ['127.0.0.1', 'localhost', 'ventarp.fr', 'nevylish.fr', 'github.io'];
+
+        for (const hostname of hostnames) {
+            if (window.location.hostname.includes(hostname)) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    if (isPreview()) {
         if (config.welcome.displayPlayerName) {
             const names = [
                 'Alvaro',
