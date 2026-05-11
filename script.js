@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const background = document.getElementById('backgroundContainer');
     const backgroundOverlay = document.getElementById('backgroundOverlay');
     const backgroundVideo = document.getElementById('backgroundVideo');
+    const backgroundVideoAmbient = document.getElementById('backgroundVideoAmbient');
     const mainContainer = document.getElementById('mainContainer');
     const leftContainer = document.getElementById('leftContainer');
     const musicPlayerContainer = document.getElementById('musicPlayerContainer');
@@ -451,6 +452,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.warn('Erreur de lecture vidéo:', err);
             }
         });
+
+        if (backgroundVideoAmbient) {
+            const ctx = backgroundVideoAmbient.getContext('2d', { alpha: false });
+            backgroundVideoAmbient.width = 256;
+            backgroundVideoAmbient.height = 144;
+
+            function drawAmbient() {
+                if (!backgroundVideo.paused && !backgroundVideo.ended) {
+                    ctx.drawImage(backgroundVideo, 0, 0, backgroundVideoAmbient.width, backgroundVideoAmbient.height);
+                }
+                requestAnimationFrame(drawAmbient);
+            }
+
+            backgroundVideo.addEventListener('play', () => {
+                requestAnimationFrame(drawAmbient);
+            });
+        }
     }
 
     function tryAudioAutoplay() {

@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css?v=1" />
+        <link rel="stylesheet" href="style.css?v=1.1" />
         <link
             href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
             rel="stylesheet"
@@ -33,11 +33,18 @@
         </div>
 
         <div class="splash-container" id="splashContainer">
-            <img src="background/image.png?v=1" draggable="false" id="splash-img" alt="Logo Venta" />
+            <img src="background/image.png?v=1.1" draggable="false" id="splash-img" alt="Logo Venta" />
         </div>
 
         <div class="background-container" id="backgroundContainer">
-            <video class="background-video" id="backgroundVideo" src="background/video.mp4?v=1" muted loop></video>
+            <canvas class="background-video ambient" id="backgroundVideoAmbient"></canvas>
+            <video
+                class="background-video main"
+                id="backgroundVideo"
+                src="background/video.mp4?v=1.1"
+                muted
+                loop
+            ></video>
             <div class="background-overlay" id="backgroundOverlay"></div>
         </div>
 
@@ -90,13 +97,13 @@
             </div>
 
             <div class="logo-container" id="logoContainer">
-                <img src="logo.png?v=1" alt="Logo du serveur" draggable="false" />
+                <img src="logo.png?v=1.1" alt="Logo du serveur" draggable="false" />
             </div>
 
             <progress class="loading-bar" id="loadingBar" value="0" max="1"></progress>
         </div>
 
-        <script src="config.js?v=1"></script>
-        <script src="script.js?v=1"></script>
+        <script src="config.js?v=1.1"></script>
+        <script src="script.js?v=1.1"></script>
     </body>
 </html>

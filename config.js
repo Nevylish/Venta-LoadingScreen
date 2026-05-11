@@ -115,7 +115,7 @@ const config = {
 
     splashScreen: {
         // Activer le splash screen
-        enable: false,
+        enable: true,
         // Temps d'affichage du splash screen en secondes
         duration: 2.5,
     },

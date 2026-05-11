@@ -35,7 +35,7 @@ body {
     left: 50%;
     bottom: 2.5vh;
     transform: translateX(-50%);
-    width: 17vw;
+    width: 30.2vh;
     height: 1vh;
     z-index: 20;
     border-radius: 0.3vh;
@@ -103,15 +103,32 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 50;
     background-color: #000;
     opacity: 0;
     transition: opacity 0.3s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#splash-img {
+    width: 100%;
+    max-width: 177.78vh; /* Bloque l'image du splash au format 16:9 pour ne perdre aucune info */
+    height: 100%;
+    object-fit: cover;
 }
 
 .main-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 233.33vh; /* Bloque au format 21:9 */
+    height: 100%;
     opacity: 0;
     transition: opacity 0.3s linear;
 }
@@ -210,16 +227,34 @@ body {
 .background-video {
     pointer-events: none;
     position: absolute;
-    top: 0;
-    left: 0;
+}
+
+.background-video.ambient {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.1);
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    filter: blur(4vh) brightness(0.4);
+}
+
+.background-video.main {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 233.33vh;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 5vh rgba(0, 0, 0, 0.8);
 }
 
 .background-overlay {
     pointer-events: none;
     z-index: 1;
+    width: 100%;
+    max-width: 233.33vh; /* Bloque au format 21:9 */
     box-shadow: var(--background-overlay-shadow);
 }
 
