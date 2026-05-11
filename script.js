@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             commands.forEach((command) => {
                 const element = document.createElement('p');
                 element.classList.add('command');
-                element.innerHTML = `<strong class="command-key">${command.key}</strong>${command.text}`;
+                element.innerHTML = `<strong class="command-key">${command.key}</strong><span class="command-text">${command.text}</span>`;
                 leftContainer.appendChild(element);
             });
         }

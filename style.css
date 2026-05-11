@@ -13,12 +13,7 @@
 // ============================================================================================= */
 
 :root {
-    --main-bg: #000;
-    --shadow: 0 0.5vw 2vw #000a;
-    --shadow-inset: 0 0 10vw 5vw #000f inset;
-    --logo-shadow: 0 0.3vw 1vw #000a, 0 0 1.5vw rgba(0, 191, 255, 0.4), 0 0 3vw rgba(0, 191, 255, 0.2);
-    --tagline-shadow:
-        0 0 0.3vw rgba(255, 255, 255, 0.4), 0 0 0.7vw rgba(255, 255, 255, 0.2), 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.6);
+    --background-overlay-shadow: 0 0 17.77vh 8.88vh #000f inset;
 }
 
 body {
@@ -27,8 +22,8 @@ body {
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: var(--main-bg);
+    font-family: 'Inter', Arial, sans-serif;
+    background: #000;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -40,24 +35,23 @@ body {
     left: 50%;
     bottom: 2.5vh;
     transform: translateX(-50%);
-    width: 20vw;
-    height: 1.5vh;
+    width: 17vw;
+    height: 1vh;
     z-index: 20;
     border-radius: 0.3vh;
-    border: 2px solid rgba(255, 255, 255, 0.295);
     overflow: hidden;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(0.8vh);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .loading-bar::-webkit-progress-bar {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 0vh;
+    background: transparent;
 }
 
 .loading-bar::-webkit-progress-value {
-    background: rgba(255, 255, 255, 0.295);
-    border-radius: 0.1vh;
-    box-shadow: 0 0 0.1vw rgba(255, 255, 255, 0.479);
+    background: rgba(255, 255, 255, 0.3);
+    border-top-right-radius: 0.2vh;
+    border-bottom-right-radius: 0.2vh;
     transition: width 0.2s linear;
 }
 
@@ -78,27 +72,27 @@ body {
 }
 
 .preview-main-text {
-    font-size: 2.5rem;
+    font-size: 3.7vh;
     color: #fff;
-    letter-spacing: 0.1vw;
+    letter-spacing: 0.17vh;
     text-align: center;
     margin: 0;
-    padding: 0 2vw;
+    padding: 0 3.55vh;
 }
 
 .preview-sub-text {
-    font-size: 1.5rem;
+    font-size: 2.22vh;
     color: #d4d4d4;
-    letter-spacing: 0.1vw;
+    letter-spacing: 0.17vh;
     text-align: center;
     margin: 0;
-    padding: 0 2vw;
+    padding: 0 3.55vh;
 }
 
 .preview-watermark {
-    font-size: 1rem;
+    font-size: 1.48vh;
     color: #a8a8a8;
-    letter-spacing: 0.06vw;
+    letter-spacing: 0.1vh;
     text-align: center;
     margin: 0;
     position: absolute;
@@ -124,37 +118,48 @@ body {
 
 .left-container {
     position: absolute;
-    top: 1vh;
-    left: 3vw;
+    left: 5vh;
     z-index: 10;
 }
 
-.command-key {
-    display: inline-block;
-    min-width: 1.3em;
-    text-align: center;
-    border: 2px solid #bebebe7e;
-    border-radius: 5px;
-    background-color: #ffffff17;
-    padding: 0.25vh 0.25vw;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.1rem;
-    margin-right: 0.5vw;
-    backdrop-filter: blur(10px);
+.command {
+    display: flex;
+    align-items: center;
+    gap: 0.92vh;
+    margin: 0.6vh 0;
+    margin-left: 0.92vh;
 }
 
-.command {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.1rem;
-    color: #ffffffbe;
-    padding-left: 0.5vw;
+.command-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.77vh;
+    padding: 0.27vh 0.74vh;
+    background: rgba(255, 255, 255, 0.08);
+    border: 0.09vh solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.46vh;
+    backdrop-filter: blur(0.8vh);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.85vh;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.command-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.92vh;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3.7vh;
     font-weight: 400;
-    letter-spacing: 0.05vw;
+    letter-spacing: 0.08vh;
     color: #ffffffe5;
     z-index: 10;
     text-transform: uppercase;
@@ -162,8 +167,7 @@ body {
 
 .logo-container {
     position: absolute;
-    top: 0.7vh;
-    right: 1vw;
+    right: 0vh;
     display: flex;
     align-items: center;
     z-index: 10;
@@ -175,13 +179,12 @@ body {
 
 .server-name p {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-size: 3.7vh;
     font-weight: 400;
-    letter-spacing: 0.05vw;
+    letter-spacing: 0.08vh;
     color: #fff;
     margin: 0;
     padding: 0;
-    text-shadow: var(--tagline-shadow);
     white-space: nowrap;
 }
 
@@ -197,7 +200,6 @@ body {
 
 .background-container {
     z-index: 0;
-    box-shadow: var(--shadow);
     overflow: hidden;
     opacity: 0;
     transition:
@@ -208,24 +210,17 @@ body {
 .background-video {
     pointer-events: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     width: 100vw;
-    height: 100vw;
-    transform: translate(-50%, -50%);
-}
-
-@media (max-aspect-ratio: 16/9) {
-    .background-video {
-        width: 177.78vh;
-        height: 100vh;
-    }
+    height: 100vh;
+    object-fit: cover;
 }
 
 .background-overlay {
     pointer-events: none;
     z-index: 1;
-    box-shadow: var(--shadow-inset);
+    box-shadow: var(--background-overlay-shadow);
 }
 
 @keyframes backgroundFadeInOut {
@@ -243,33 +238,32 @@ body {
 
 .logo img {
     position: fixed;
-    top: -1vw;
-    left: 2vw;
+    top: -1.77vh;
+    left: 3.55vh;
     z-index: 4;
     height: 25vh;
-    filter: var(--logo-shadow);
 }
 
 .music-player-container {
     position: absolute;
     bottom: 2vh;
-    left: 1.4vw;
+    left: 2.48vh;
     z-index: 5;
     background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.8vh 1.3vw;
-    width: 14vw;
-    min-width: 200px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(0.5vh);
+    border: 0.18vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.11vh;
+    padding: 1.8vh 2.31vh;
+    width: 24.88vh;
+    min-width: 18.51vh;
+    box-shadow: 0 0.74vh 2.96vh rgba(0, 0, 0, 0.2);
     transition: background 80ms linear;
     display: none;
 }
 
 .music-player-container:hover {
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.74vh 2.96vh rgba(0, 0, 0, 0.2);
 }
 
 .music-info {
@@ -278,10 +272,10 @@ body {
 }
 
 .song-icon {
-    width: 3vw;
-    height: 3vw;
+    width: 5.33vh;
+    height: 5.33vh;
     margin-bottom: 0.8vh;
-    margin-right: 0.8vw;
+    margin-right: 1.42vh;
     flex-shrink: 0;
     border-radius: 10%;
     object-fit: cover;
@@ -296,25 +290,24 @@ body {
 
 .song-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-size: 2vh;
     color: #fff;
     margin: 0;
     font-weight: 400;
-    letter-spacing: 0.05vw;
+    letter-spacing: 0.08vh;
 }
 
 .song-artist {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2vh;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
-    font-weight: 300;
 }
 
 .music-controls {
     display: flex;
     align-items: center;
-    gap: 0.5vw;
+    gap: 0.88vh;
     margin-bottom: 0.5vh;
 }
 
@@ -336,10 +329,10 @@ body {
 }
 
 .control-btn svg {
-    width: 1.5vw;
-    height: 1.5vw;
-    min-width: 20px;
-    min-height: 20px;
+    width: 2.66vh;
+    height: 2.66vh;
+    min-width: 1.85vh;
+    min-height: 1.85vh;
 }
 
 .play-icon,
@@ -358,7 +351,7 @@ body {
 .volume-control {
     display: flex;
     align-items: center;
-    gap: 0.3vw;
+    gap: 0.53vh;
     flex: 1;
 }
 
@@ -377,9 +370,9 @@ body {
 
 .volume-slider {
     flex: 1;
-    height: 7px;
+    height: 0.64vh;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
+    border-radius: 0.27vh;
     width: 100%;
     outline: none;
     cursor: pointer;
@@ -389,16 +382,16 @@ body {
 
 .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 1.11vh;
+    height: 1.11vh;
     background: #fff;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .volume-slider::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
+    width: 1.11vh;
+    height: 1.11vh;
     background: #fff;
     border-radius: 50%;
     cursor: pointer;
@@ -409,14 +402,14 @@ body {
 .progress-container {
     display: flex;
     align-items: center;
-    gap: 0.5vw;
+    gap: 0.88vh;
 }
 
 .progress-bar {
     flex: 1;
-    height: 6px;
+    height: 0.55vh;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 2.2px;
+    border-radius: 0.2vh;
     overflow: hidden;
     cursor: pointer;
 }
@@ -425,133 +418,24 @@ body {
     height: 100%;
     background: rgba(78, 128, 236, 0.658);
     width: 0%;
-    border-radius: 2.2px;
+    border-radius: 0.2vh;
     transition: width 0.1s linear;
     position: relative;
 }
 
 #separator {
-    margin: 0 0.12vw;
+    margin: 0 0.21vh;
 }
 
 .time-display {
     display: flex;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.6rem, 0.8vw, 0.8rem);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.18vh;
     color: rgba(255, 255, 255, 0.7);
-    min-width: 40px;
+    min-width: 3.7vh;
     justify-content: flex-end;
 }
 
 .time-display span {
     font-weight: 300;
-}
-
-@media (max-width: 1366px) {
-    .logo img {
-        height: 22vh;
-    }
-    .music-player-container {
-        width: 22vw;
-        min-width: 260px;
-    }
-    .command {
-        font-size: 0.95rem;
-    }
-    .command-key {
-        font-size: 0.95rem;
-    }
-
-    .loading-bar {
-        border: 1.8px solid rgba(255, 255, 255, 0.295);
-    }
-}
-
-@media (max-width: 1024px) {
-    .logo img {
-        height: 20vh;
-    }
-    .music-player-container {
-        width: 26vw;
-        min-width: 240px;
-    }
-    .command {
-        font-size: 0.9rem;
-    }
-    .command-key {
-        font-size: 0.9rem;
-    }
-    .loading-bar {
-        border: 1.6px solid rgba(255, 255, 255, 0.295);
-    }
-}
-
-@media (max-width: 768px) {
-    .logo img {
-        height: 18vh;
-    }
-    .music-player-container {
-        width: 32vw;
-        min-width: 220px;
-    }
-    .command {
-        font-size: 0.8rem;
-    }
-    .command-key {
-        font-size: 0.8rem;
-    }
-    .loading-bar {
-        border: 1.4px solid rgba(255, 255, 255, 0.295);
-    }
-}
-
-@media (max-width: 480px) {
-    .logo img {
-        height: 16vh;
-    }
-    .music-player-container {
-        width: 38vw;
-        min-width: 200px;
-    }
-    .command {
-        font-size: 0.7rem;
-    }
-    .command-key {
-        font-size: 0.7rem;
-    }
-    .loading-bar {
-        border: 1.2px solid rgba(255, 255, 255, 0.295);
-    }
-}
-
-@media (min-width: 2560px) {
-    .logo img {
-        height: 28vh;
-    }
-    .music-player-container {
-        width: 16vw;
-        min-width: 280px;
-    }
-    .command {
-        font-size: 1.1rem;
-    }
-    .command-key {
-        font-size: 1.1rem;
-    }
-}
-
-@media (min-width: 3840px) {
-    .logo img {
-        height: 35vh;
-    }
-    .music-player-container {
-        width: 14vw;
-        min-width: 300px;
-    }
-    .command {
-        font-size: 1.15rem;
-    }
-    .command-key {
-        font-size: 1.15rem;
-    }
 }
