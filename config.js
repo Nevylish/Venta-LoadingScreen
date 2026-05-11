@@ -50,23 +50,23 @@ const songs = [
 const commands = [
     {
         key: 'F1',
-        text: 'Ouvrir la boutique',
+        text: 'Open shop',
     },
     {
         key: 'F3',
-        text: 'Changer la portée de la voix',
+        text: 'Change voice range',
     },
     {
         key: 'F5',
-        text: 'Ouvrir le menu personnel',
+        text: 'Open personal menu',
     },
     {
         key: 'G',
-        text: 'Sortir votre téléphone',
+        text: 'Take out your phone',
     },
     {
         key: 'U',
-        text: 'Utiliser les clés de votre véhicule',
+        text: 'Use your vehicle keys',
     },
 ];
 
@@ -77,7 +77,7 @@ const commands = [
 const config = {
     // Personnalisation du message de bienvenue
     welcome: {
-        text: 'Bienvenue sur Venta Rôleplay',
+        text: 'Welcome to Venta Rôleplay',
 
         // Inclure l'espace dans le sépérator
         // Utilise si displayPlayerName est activé

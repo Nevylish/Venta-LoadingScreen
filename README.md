@@ -1,6 +1,6 @@
 # Venta Rôleplay - Loading Screen
 
-A modern, highly customizable, and interactive FiveM loading screen created for Venta Rôleplay. It features a stunning 4K YouTube video background, a fully functional music player, and audio-reactive visual effects to keep your players entertained while joining your server.
+A modern, highly customizable, and interactive FiveM loading screen created for Venta Rôleplay. It features a stunning 4K video background, a fully functional music player, and audio-reactive visual effects to keep your players entertained while joining your server.
 
 ## 🎥 Preview
 
