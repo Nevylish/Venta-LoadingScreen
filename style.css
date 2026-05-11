@@ -47,26 +47,18 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.295);
     overflow: hidden;
     backdrop-filter: blur(5px);
-    transition:
-        width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-        background 0.2s,
-        box-shadow 0.2s;
 }
 
 .loading-bar::-webkit-progress-bar {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 0vh;
-    transition: background 0.2s;
 }
 
 .loading-bar::-webkit-progress-value {
     background: rgba(255, 255, 255, 0.295);
     border-radius: 0.1vh;
     box-shadow: 0 0 0.1vw rgba(255, 255, 255, 0.479);
-    transition:
-        width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-        background 0.2s,
-        box-shadow 0.2s;
+    transition: width 0.2s linear;
 }
 
 .preview-container {
@@ -127,7 +119,7 @@ body {
 
 .main-container {
     opacity: 0;
-    transition: opacity 0.5s linear;
+    transition: opacity 0.3s linear;
 }
 
 .left-container {
@@ -137,13 +129,13 @@ body {
     z-index: 10;
 }
 
-strong {
+.command-key {
     display: inline-block;
     min-width: 1.3em;
     text-align: center;
-    border: 2px solid #ffffff6e;
+    border: 2px solid #bebebe7e;
     border-radius: 5px;
-    background-color: #ffffff13;
+    background-color: #ffffff17;
     padding: 0.25vh 0.25vw;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 1.1rem;
@@ -206,11 +198,11 @@ strong {
 .background-container {
     z-index: 0;
     box-shadow: var(--shadow);
-    transition:
-        filter 0.2s ease,
-        opacity 1s ease-in-out;
     overflow: hidden;
-    opacity: 1;
+    opacity: 0;
+    transition:
+        filter 0.2s ease-out,
+        opacity 0.3s linear;
 }
 
 .background-video {
@@ -221,8 +213,6 @@ strong {
     width: 100vw;
     height: 100vw;
     transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
 }
 
 @media (max-aspect-ratio: 16/9) {
@@ -272,14 +262,14 @@ strong {
     padding: 1.8vh 1.3vw;
     width: 14vw;
     min-width: 200px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: background 80ms linear;
     display: none;
 }
 
 .music-player-container:hover {
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .music-info {
@@ -335,15 +325,14 @@ strong {
     cursor: pointer;
     padding: 0.2vh;
     border-radius: 20%;
-    transition: all 0.2s ease;
+    transition: background 0.1s linear;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .control-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .control-btn svg {
@@ -435,9 +424,9 @@ strong {
 .progress-fill {
     height: 100%;
     background: rgba(78, 128, 236, 0.658);
-    border-radius: 2.2px;
     width: 0%;
-    transition: width 0.1s ease;
+    border-radius: 2.2px;
+    transition: width 0.1s linear;
     position: relative;
 }
 
@@ -469,7 +458,7 @@ strong {
     .command {
         font-size: 0.95rem;
     }
-    strong {
+    .command-key {
         font-size: 0.95rem;
     }
 
@@ -489,7 +478,7 @@ strong {
     .command {
         font-size: 0.9rem;
     }
-    strong {
+    .command-key {
         font-size: 0.9rem;
     }
     .loading-bar {
@@ -508,7 +497,7 @@ strong {
     .command {
         font-size: 0.8rem;
     }
-    strong {
+    .command-key {
         font-size: 0.8rem;
     }
     .loading-bar {
@@ -527,7 +516,7 @@ strong {
     .command {
         font-size: 0.7rem;
     }
-    strong {
+    .command-key {
         font-size: 0.7rem;
     }
     .loading-bar {
@@ -546,7 +535,7 @@ strong {
     .command {
         font-size: 1.1rem;
     }
-    strong {
+    .command-key {
         font-size: 1.1rem;
     }
 }
@@ -562,7 +551,7 @@ strong {
     .command {
         font-size: 1.15rem;
     }
-    strong {
+    .command-key {
         font-size: 1.15rem;
     }
 }

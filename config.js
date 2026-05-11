@@ -11,6 +11,10 @@
 
 // Liste des sons qui seront joués aléatoirement
 // Pensez à bien orthographier les noms des fichiers et les extensions (.mp3 / .jpg / .png...)
+
+// Si vous ne voulez pas de musique, laissez comme ci-dessous
+// const songs = []
+
 const songs = [
     {
         id: 'song1',

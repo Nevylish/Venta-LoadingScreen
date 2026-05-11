@@ -90,16 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
         previewContainer.addEventListener('click', () => {
             toggleFullScreen();
 
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
+            if (config.music.enable) {
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
 
-            audio
-                .play()
-                .then(() => {
-                    audio.pause();
-                })
-                .catch(() => {});
+                audio
+                    .play()
+                    .then(() => {
+                        audio.pause();
+                    })
+                    .catch(() => {});
+            }
 
             previewContainer.style.display = 'none';
 
@@ -123,14 +125,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSongIndex = 0;
     let shuffledSongs = [...songs];
 
-    if (config.music.shuffleSongs) {
+    if (songs.length === 0) {
+        config.music.enable = false;
+    }
+
+    if (config.music.enable && config.music.shuffleSongs) {
         shuffledSongs.sort(() => Math.random() - 0.5);
     }
 
-    let audio = new Audio(shuffledSongs[currentSongIndex].file);
+    let audio = config.music.enable ? new Audio(shuffledSongs[currentSongIndex].file) : null;
 
     let currentVolume = config.music.defaultVolume / 100;
     volumeSlider.value = config.music.defaultVolume;
+
+    function updateVolumeSliderBackground() {
+        const value = volumeSlider.value;
+        volumeSlider.style.background = `linear-gradient(to right, #ffffff98 ${value}%, rgba(255, 255, 255, 0.2) ${value}%)`;
+    }
 
     let audioCtx, analyser, sourceNode, lowpassFilter, gainNode;
 
@@ -166,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             commands.forEach((command) => {
                 const element = document.createElement('p');
                 element.classList.add('command');
-                element.innerHTML = `<strong>${command.key}</strong>${command.text}`;
+                element.innerHTML = `<strong class="command-key">${command.key}</strong>${command.text}`;
                 leftContainer.appendChild(element);
             });
         }
@@ -174,12 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(
             () => {
                 splashContainer.style.opacity = '0';
-                backgroundVideo.style.opacity = '1';
+                background.style.opacity = '1';
 
                 if (config.music.enable) {
                     if (!config.music.hidePlayer) {
                         musicPlayerContainer.style.display = 'block';
                         progressFill.style.background = config.music.progressBarColor;
+                        updateVolumeSliderBackground();
                     }
                     tryAudioAutoplay();
                 }
@@ -244,11 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         lowpassFilter.connect(analyser);
     }
 
-    setupAudioAnalyzer(audio);
-
     function flashBackground() {
         background.style.filter = 'brightness(0.9)';
-        background.style.transition = 'filter 0.15s ease-out';
         setTimeout(() => {
             background.style.filter = 'brightness(0.75)';
         }, 150);
@@ -297,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (config.music.enable && config.music.enableReactiveBackground) {
         background.style.filter = 'brightness(0.75)';
+        setupAudioAnalyzer(audio);
         startBeatDetection();
     }
 
@@ -424,6 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.addEventListener('click', nextTrack);
     volumeSlider.addEventListener('input', (e) => {
         setVolume(e.target.value / 100);
+        updateVolumeSliderBackground();
     });
     progressBar.addEventListener('click', (e) => {
         const rect = progressBar.getBoundingClientRect();
